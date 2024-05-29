@@ -1,6 +1,7 @@
 package org.choongang.game.controllers;
 
 import org.apache.ibatis.session.SqlSession;
+import org.choongang.game.entites.GameScore;
 import org.choongang.game.mapper.GameMapper;
 import org.choongang.global.AbstractController;
 import org.choongang.global.Router;
@@ -19,7 +20,6 @@ public class GameController extends AbstractController {
     private int me;
     private int you;
     private int gamescore = 0;
-
 
 
     @Override
@@ -73,26 +73,6 @@ public class GameController extends AbstractController {
             }
         }
 
-        Router router = MainRouter.getInstance();
-
-        try{
-            GameMapper mapper = session.getMapper(GameMapper.class);
-            GameScore scores = GameScore.builder()
-                    .userId(LoginController.loginId)
-                    .score(gamescore)
-                    .build();
-            int cnt = mapper.insertScore(scores);
-            System.out.println("점수저장완료");
-            router.change(Menu.MAIN);
-        }catch(Exception e){
-            e.printStackTrace();
-            router.change(Menu.MAIN);
-        }
-
-
-
     }
 
 }
-
-
