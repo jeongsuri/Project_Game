@@ -27,6 +27,10 @@ public class MemberControllerLocator implements ControllerLocator {
     @Override
     public Controller find(Menu menu) {
         Controller controller = controllers.get(menu);
+
+
+
+
         if (controller != null) {
             return controller;
         }

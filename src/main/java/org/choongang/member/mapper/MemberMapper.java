@@ -16,7 +16,7 @@ public interface MemberMapper {
 
     String getId (String userId);
     int register(Member member);
-
     Member get (String userId);
+
 }
 

@@ -41,7 +41,7 @@ public class GameController extends AbstractController {
                     .player2(you)
                     .build();
             try {
-                
+
                 Service service = GameServiceLocator.getInstance().find(Menu.GAME);
                 service.process(form);
                 System.out.println(form);
@@ -95,7 +95,7 @@ public class GameController extends AbstractController {
             }
         }
 
-        // 게임 종료 후 점수 저장 여부 묻기  
+        // 게임 종료 후 점수 저장 여부 묻기
         ScoreController scoreController = new ScoreController();
         scoreController.SaveScore(gamescore);
 

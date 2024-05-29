@@ -2,6 +2,7 @@ package org.choongang.global;
 
 import org.choongang.global.constants.Menu;
 import org.choongang.main.MainRouter;
+import org.choongang.member.session.MemberSession;
 import org.choongang.template.Templates;
 
 import java.util.Scanner;
@@ -90,14 +91,27 @@ public abstract class AbstractController implements Controller {
 
     private void change(int menuNo) { // 공통 입력 내용
         Menu menu = null;
-        switch(menuNo) {
-            case 1: menu = Menu.JOIN; break; // 회원가입
-            case 2: menu = Menu.LOGIN; break; // 로그인
-
-            case 3:menu =Menu.GAME; break; //게임선택
-            case 4:menu =Menu.RANK; break; //랭킹조회
-            default: menu = Menu.MAIN; // 메인 메뉴
+        if (MemberSession.isLogin()) {
+            switch (menuNo) {
+                case 1: menu = Menu.GAME; break;
+                case 2: menu = Menu.RANK; break;
+                case 3:
+                    MemberSession.logout();
+                    menu = Menu.MAIN;
+                    break;
             }
+        } else {
+            switch (menuNo) {
+                case 1:
+                    menu = Menu.JOIN;
+                    break; // 회원가입
+                case 2:
+                    menu = Menu.LOGIN;
+                    break; // 로그인
+                default:
+                    menu = Menu.MAIN; // 메인 메뉴
+            }
+        }
 
 
 
