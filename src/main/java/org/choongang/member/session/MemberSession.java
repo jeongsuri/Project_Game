@@ -17,5 +17,9 @@ public class MemberSession {
     public static boolean isLogin() {
         return member != null;
     }
+
+    public static void logout() {
+        member = null;
+    }
 }
 
