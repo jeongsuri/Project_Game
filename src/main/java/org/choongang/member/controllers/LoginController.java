@@ -39,10 +39,8 @@ public class LoginController extends AbstractController {
             service.process(form);
             router.change(Menu.MAIN); // 로그인 성공시 -> 메인페이지
         }catch(RuntimeException e){
-            String redBoldText = "\033[31;1m";      //오류 색깔 지정
-            String resetText = "\033[0m";
 
-            System.out.println(redBoldText + "\n아이디 또는 비밀번호가 잘못되었습니다. \n다시 시도하세요." + resetText);    // 로그인 실패 알림
+            System.out.println("\033[31;1m" + "\n아이디 또는 비밀번호가 잘못입력되었습니다.. \n다시 시도하세요." + "\033[0m");
             router.change(Menu.LOGIN); //로그인 실패시 -> 로그인페이지
         }
 
