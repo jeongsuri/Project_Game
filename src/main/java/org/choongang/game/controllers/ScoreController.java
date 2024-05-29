@@ -43,4 +43,3 @@ public class ScoreController { // 점수 저장 여부 -> y/n | y -> 점수 조�
         router.change(Menu.MAIN);
     }
 }
-// 이 코드를 GameController 에서 호출할 수 있도록 해야 하는데.. GameController 에 이미 있다..? ->  해결 완료
