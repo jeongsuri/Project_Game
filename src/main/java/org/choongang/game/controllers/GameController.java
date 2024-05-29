@@ -40,7 +40,7 @@ public class GameController extends AbstractController {
         p1.add("✋");
 
 
-        while(true){
+        while(true) {
             System.out.print("가위바위보");
             me = sc.nextInt() - 1;
             you = random.nextInt(3);
@@ -49,12 +49,12 @@ public class GameController extends AbstractController {
                     .player2(you)
                     .build();
             try {
-                
+
                 Service service = GameServiceLocator.getInstance().find(Menu.GAME);
                 service.process(form);
                 System.out.println(form);
 
-            }catch(RuntimeException e){
+            } catch (RuntimeException e) {
 
                 System.out.println("오류");
 
