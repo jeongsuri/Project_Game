@@ -1,17 +1,11 @@
 package org.choongang.game.controllers;
-
 import org.apache.ibatis.session.SqlSession;
 import org.choongang.game.entities.GamePlay;
-import org.choongang.game.entities.GameScore;
-import org.choongang.game.mapper.GameMapper;
-import org.choongang.game.services.GameService;
 import org.choongang.game.services.GameServiceLocator;
 import org.choongang.global.AbstractController;
-import org.choongang.global.Router;
 import org.choongang.global.Service;
 import org.choongang.global.configs.DBConn;
 import org.choongang.global.constants.Menu;
-
 import org.choongang.template.Templates;
 
 import java.util.ArrayList;
@@ -23,7 +17,6 @@ public class GameController extends AbstractController {
     private int me;
     private int you;
     private int gamescore = 0;
-
 
 
     @Override
@@ -48,7 +41,7 @@ public class GameController extends AbstractController {
                     .player2(you)
                     .build();
             try {
-                //회원 가입 처리..
+                
                 Service service = GameServiceLocator.getInstance().find(Menu.GAME);
                 service.process(form);
                 System.out.println(form);
@@ -102,28 +95,10 @@ public class GameController extends AbstractController {
             }
         }
 
-        Router router = MainRouter.getInstance();
-
-        try{
-            GameMapper mapper = session.getMapper(GameMapper.class);
-            GameScore scores = GameScore.builder()
-                    .userId(MemberSession.getMember().getUserId())
-                    .score(gamescore)
-                    .build();
-            int cnt = mapper.insertScore(scores);
-            System.out.println("점수저장완료");
-            router.change(Menu.MAIN);
-        }catch(Exception e){
-            e.printStackTrace();
-            router.change(Menu.MAIN);
-        }
+        // 게임 종료 후 점수 저장 여부 묻기  
+        ScoreController scoreController = new ScoreController();
+        scoreController.SaveScore(gamescore);
 
          */
-
-
-
     }
-
 }
-
-
