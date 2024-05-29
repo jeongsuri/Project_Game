@@ -27,7 +27,6 @@ public class GameController extends AbstractController {
     private int gamescore = 0;
 
 
-
     @Override
     public void show() {
     }
@@ -104,28 +103,8 @@ public class GameController extends AbstractController {
             }
         }
 
-        Router router = MainRouter.getInstance();
-
-        try{
-            GameMapper mapper = session.getMapper(GameMapper.class);
-            GameScore scores = GameScore.builder()
-                    .userId(MemberSession.getMember().getUserId())
-                    .score(gamescore)
-                    .build();
-            int cnt = mapper.insertScore(scores);
-            System.out.println("점수저장완료");
-            router.change(Menu.MAIN);
-        }catch(Exception e){
-            e.printStackTrace();
-            router.change(Menu.MAIN);
-        }
-
-         */
-
-
-
+        // 게임 종료 후 점수 저장 여부 묻기  
+        ScoreController scoreController = new ScoreController();
+        scoreController.SaveScore(gamescore);
     }
-
 }
-
-
