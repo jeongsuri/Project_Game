@@ -13,7 +13,7 @@ import org.choongang.global.configs.DBConn;
 import org.choongang.global.constants.Menu;
 import org.choongang.main.MainRouter;
 import org.choongang.member.controllers.LoginController;
-import org.choongang.member.services.MemberServiceLocator;
+import org.choongang.member.session.MemberSession;
 import org.choongang.template.Templates;
 
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class GameController extends AbstractController {
                     .player2(you)
                     .build();
             try {
-                //회원 가입 처리..
+                
                 Service service = GameServiceLocator.getInstance().find(Menu.GAME);
                 service.process(form);
                 System.out.println(form);
@@ -109,7 +109,7 @@ public class GameController extends AbstractController {
         try{
             GameMapper mapper = session.getMapper(GameMapper.class);
             GameScore scores = GameScore.builder()
-                    .userId(LoginController.loginId)
+                    .userId(MemberSession.getMember().getUserId())
                     .score(gamescore)
                     .build();
             int cnt = mapper.insertScore(scores);
