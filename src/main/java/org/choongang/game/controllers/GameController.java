@@ -73,7 +73,7 @@ public class GameController extends AbstractController {
             }
         }
 
-        // 게임 종료 후 점수 저장 여부 묻기
+        // 게임 종료 후 점수 저장 여부 묻기  
         ScoreController scoreController = new ScoreController();
         scoreController.SaveScore(gamescore);
     }
