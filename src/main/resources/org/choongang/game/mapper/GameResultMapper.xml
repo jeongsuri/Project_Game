@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.GameResultMapper">
+    <insert id="insertGameResult">
+        INSERT INTO game_results (user_name, wins, losses)
+        VALUES (#{userName}, #{wins}, #{losses})
+    </insert>
+
+    <select id="getTotalGameResults" resultType="test.GameResult">
+        SELECT * FROM game_results ORDER BY wins DESC
+    </select>
+</mapper>

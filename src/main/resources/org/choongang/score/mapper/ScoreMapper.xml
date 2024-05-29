@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.choongang.score.mapper.ScoreMapper">
+    <resultMap id="scoreMap" type="org.choongang.score.entities.Score">
+        <result column="SCORE" property="score" />
+        <result column="USER_ID" property="userId" />
+    </resultMap>
+
+    <select id="getScore1" resultType="org.choongang.score.entities.Rank">
+        <![CDATA[SELECT ROWNUM RANK, s.* FROM (SELECT MAX(t.SCORE) MAX_SCORE, t.USER_ID FROM SCORE t GROUP BY t.USER_ID) s WHERE ROWNUM <= 10]]>
+    </select>
+
+    <select id="getScore2" resultType="org.choongang.score.entities.Score">
+        <![CDATA[
+    SELECT RANK() OVER (ORDER BY s.SCORE DESC) AS RANK,
+           s.*
+    FROM (
+        SELECT * FROM SCORE s ORDER BY s.SCORE DESC
+    ) s
+    WHERE ROWNUM <= 10
+]]>
+    </select>
+
+    <select id="getScoreOne" resultType="java.lang.Integer">
+        <![CDATA[
+        SELECT MIN(RANK) AS 순위 FROM (SELECT SCORE, USER_ID, RANK() OVER(ORDER BY SCORE DESC) AS RANK FROM SCORE
+        ORDER BY SCORE DESC) WHERE USER_ID = #{USER_ID}
+        ]]>
+    </select>
+
+    <insert id="plusScore" >
+        INSERT INTO SCORE (SCORE, USER_ID)
+        VALUES (#{SCORE}, #{USER_ID})
+    </insert>
+
+</mapper>
