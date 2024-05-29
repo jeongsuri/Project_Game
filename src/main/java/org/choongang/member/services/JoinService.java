@@ -13,23 +13,16 @@ public class JoinService implements Service<RequestJoin> {
     public void process(RequestJoin form) {
         SqlSession session = DBConn.getSession();
         String inputId = form.getUserId();
-        /*String id = form.getUserId();
-        String pw = form.getUserPw();
-        String cpw = form.getConfirmPw();
-        String nm = form.getUserNm();*/
 
         MemberMapper mapper = session.getMapper(MemberMapper.class);
-        /*String dataId = mapper.getId(inputId);
-         if (!dataId.equals(inputId))  {
-            throw new RuntimeException();
-        }*/
+
+        String dataId = mapper.getId(inputId);
+
         Member member = Member.builder()
                 .userId(form.getUserId())
                 .userPw(form.getUserPw())
                 .userNm(form.getUserNm())
                 .build();
         int cnt = mapper.register(member);
-        //int cnt = session.insert("mappers.MemberMapper.register", member);
-
     }
 }

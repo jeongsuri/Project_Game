@@ -21,16 +21,8 @@ public class JoinController extends AbstractController {
     @Override
     public void prompt() { // prompt 재정의 -> 하지 않으면 기본 값으로 나오기 때문에
        String userId = promptWithValidation("아이디(6자리 이상) : ", str -> str.length() >= 6);
-        Router router2 = MainRouter.getInstance();
-        /* try {
+       Router router2 = MainRouter.getInstance();
 
-            if (!userId.equals(getId)) {
-                System.out.println("사용 가능한 아이디입니다.");
-            }
-        } catch (RuntimeException e) {
-            System.out.println("다른 아이디를 사용해주세요.");
-            router2.change(Menu.MAIN);
-        } */
        String userPw = promptWithValidation("비밀번호(8자리 이상) : ", s -> s.length() >= 8);
        String confirmPw = promptWithValidation("비밀번호 확인 : ", s -> { boolean match = s.equals(userPw);
            if(!match) {
@@ -52,17 +44,18 @@ public class JoinController extends AbstractController {
        try {
            //회원 가입 처리..
            Service service = MemberServiceLocator.getInstance().find(Menu.JOIN);
+
            service.process(form);
 
-           System.out.println("회원가입 성공했습니다.");
+           System.out.println("\033[34;1m" + "\n회원가입 성공했습니다." + "\033[0m");
 
            //회원 가입 성공시 -> 로그인 화면
            router.change(Menu.LOGIN);
 
        }catch(RuntimeException e){
            //회원가입 실패시 -> 회원가입 화면으로 이동
-           System.err.println(e.getMessage());
-           System.out.println("다른 아이디를 입력하세요.");
+
+           System.out.println("\033[31;1m" + "\n아이디가 중복되었습니다. \n다시 입력하세요." + "\033[0m");
            router.change(Menu.JOIN);
            //로그인 성공시 게임선택,랭킹조회 화면 이동
 
