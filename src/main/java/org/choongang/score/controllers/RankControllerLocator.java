@@ -1,12 +1,33 @@
 package org.choongang.score.controllers;
 
-import org.choongang.global.AbstractServiceLocator;
-import org.choongang.global.Service;
+import org.choongang.global.*;
 import org.choongang.global.constants.Menu;
 
-public class RankControllerLocator extends AbstractServiceLocator {
+public class RankControllerLocator extends AbstractControllerLocator {
+
+    private static ControllerLocator instance;
+
+    public static ControllerLocator getInstance() {
+        if (instance == null) {
+            instance = new RankControllerLocator();
+        }
+
+        return instance;
+    }
+
     @Override
-    public Service find(Menu menu) {
-        return null;
+    public Controller find(Menu menu) {
+        Controller controller = controllers.get(menu);
+        if (controller != null) {
+            return controller;
+        }
+
+        switch (menu) {
+            case RANK: controller = new RankController();
+        }
+
+        controllers.put(menu, controller);
+
+        return controller;
     }
 }

@@ -6,6 +6,7 @@ import org.choongang.template.main.MainTpl;
 import org.choongang.template.member.JoinTpl;
 import org.choongang.template.member.LoginTpl;
 import org.choongang.template.member.MypageTpl;
+import org.choongang.template.score.RankTpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,11 +28,13 @@ public class Templates {
     }
 
     public <T> void render(Menu menu, T data) {
+
         System.out.println(find(menu,data).getTpl());
     }
 
 
     public <T> Template find(Menu menu, T data){
+
         Template tpl = tpls.get(menu);
         if(tpl != null){
             return tpl;
@@ -41,6 +44,7 @@ public class Templates {
             case LOGIN: tpl = new LoginTpl(); break;
             case MYPAGE: tpl = new MypageTpl(); break;
             case GAME: tpl = new GameTpl(); break;
+            case RANK: tpl = new RankTpl(); break;
             default: tpl = new MainTpl();
         }
 

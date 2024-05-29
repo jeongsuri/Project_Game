@@ -11,7 +11,6 @@ public class RankController extends AbstractController {
     @Override
     public void show() {
         ScoreMapper mapper = DBConn.getSession().getMapper(ScoreMapper.class);
-
         Templates.getInstance().render(Menu.RANK, mapper.getScore2());
 
     }
