@@ -1,4 +1,4 @@
-package org.choongang.game.controllers;
+package org.choongang.game.entities;
 
 import lombok.Builder;
 import lombok.Data;
