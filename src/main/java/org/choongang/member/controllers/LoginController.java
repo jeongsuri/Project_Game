@@ -7,6 +7,7 @@ import org.choongang.global.constants.Menu;
 import org.choongang.main.MainRouter;
 import org.choongang.member.services.LoginService;
 import org.choongang.member.services.MemberServiceLocator;
+import org.choongang.member.session.MemberSession;
 import org.choongang.template.Templates;
 
 /**
@@ -14,7 +15,6 @@ import org.choongang.template.Templates;
  */
 public class LoginController extends AbstractController {
     static String dataPw;
-    public static String loginId;      // 로그인동안 사용할 사용자 ID
 
     @Override
     public void show() {
@@ -24,7 +24,6 @@ public class LoginController extends AbstractController {
     @Override
     public void prompt() {
         String userId = promptWithValidation("아이디 : ", s -> !s.isBlank());
-        loginId = userId;
         String userPw = promptWithValidation("비밀번호 : ", s -> !s.isBlank());
 
         RequestLogin form = RequestLogin.builder()

@@ -14,8 +14,17 @@
         <result column="REG_DT" property="regDt" />
         <result column="MOD_DT" property="modDt" />
     </resultMap>
-  
- <select id="getMember" >
+
+    <select id="get" resultMap="memberMap">
+        SELECT * FROM MEMBER
+        <where>
+            <if test="userId != null">
+                USER_ID=#{userId}
+            </if>
+        </where>
+    </select>
+
+    <select id="getMember" >
         SELECT * FROM MEMBER
     </select>
   
