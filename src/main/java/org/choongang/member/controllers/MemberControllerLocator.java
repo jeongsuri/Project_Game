@@ -36,7 +36,6 @@ public class MemberControllerLocator implements ControllerLocator {
         }
         switch(menu) {
             case JOIN: controller = new JoinController(); break;
-            case RANK: controller = new RankController(); break;
             default: controller = new LoginController();
         }
 

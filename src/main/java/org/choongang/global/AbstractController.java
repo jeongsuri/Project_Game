@@ -70,12 +70,12 @@ public abstract class AbstractController implements Controller {
         return Integer.parseInt(str) - 1;
     }
 
-    protected String scoremessage(String message){
+    protected int scores(String message){
         String str = null;
         System.out.print(message);
         str = sc.nextLine();
 
-        return str;
+        return Integer.parseInt(str) - 1;
     }
 
     /**

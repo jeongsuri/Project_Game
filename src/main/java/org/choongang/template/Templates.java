@@ -6,7 +6,7 @@ import org.choongang.template.main.MainTpl;
 import org.choongang.template.member.JoinTpl;
 import org.choongang.template.member.LoginTpl;
 import org.choongang.template.member.MypageTpl;
-import org.choongang.template.score.RankTpl;
+import org.choongang.template.score.MyRankTpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,7 +44,7 @@ public class Templates {
             case LOGIN: tpl = new LoginTpl(); break;
             case MYPAGE: tpl = new MypageTpl(); break;
             case GAME: tpl = new GameTpl(); break;
-            case RANK: tpl = new RankTpl(); break;
+            case RANK: tpl = new MyRankTpl(); break;
             default: tpl = new MainTpl();
         }
 
