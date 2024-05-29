@@ -9,6 +9,7 @@ import org.choongang.template.member.MypageTpl;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public class Templates {
     private static Templates instance;
@@ -26,12 +27,12 @@ public class Templates {
         render(menu, null);
     }
 
-    public <T> void render(Menu menu, T data) {
-        System.out.println(find(menu,data).getTpl());
+    public void render(Menu menu, Supplier<String> hook) {
+        System.out.println(find(menu,hook).getTpl());
     }
 
 
-    public <T> Template find(Menu menu, T data){
+    public Template find(Menu menu, Supplier<String> hook){
         Template tpl = tpls.get(menu);
         if(tpl != null){
             return tpl;
@@ -43,11 +44,9 @@ public class Templates {
             case GAME: tpl = new GameTpl(); break;
             default: tpl = new MainTpl();
         }
-
-        if (data != null) {
-            tpl.setData(data);
+        if (hook != null) {
+            tpl.addHook(hook);
         }
-
         tpls.put(menu,tpl);
         return tpl;
     }

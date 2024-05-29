@@ -1,9 +1,9 @@
 package org.choongang.template;
 
+import java.util.function.Supplier;
+
 public interface Template {
     String getTpl();
 
-    default  void setData(Object data) {
-
-    }
+    default void addHook(Supplier<String> hook) {}
 }
