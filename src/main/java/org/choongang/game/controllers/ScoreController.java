@@ -1,6 +1,5 @@
 package org.choongang.game.controllers;
 
-import com.sun.tools.javac.Main;
 import org.apache.ibatis.session.SqlSession;
 import org.choongang.game.entites.GameScore;
 import org.choongang.game.mapper.GameMapper;
@@ -15,7 +14,7 @@ import java.util.Scanner;
 public class ScoreController { // 점수 저장 여부 -> y/n | y -> 점수 조회 & 메인 페이지 , n -> 메인 페이지
     private SqlSession session = DBConn.getSession(); // session = 데이터베이스 연결
 
-    public void SaveScore(int GameScore) { // saveScore -> 점수 저장 여부 + 저장
+    public void SaveScore(int score) { // saveScore -> 점수 저장 여부 + 저장
         Scanner scanner = new Scanner(System.in);
         System.out.println("점수를 저장하시겠습니까? (예 : y / 아니오 : n) "); // 저장 여부 질문
         String response = scanner.nextLine(); // y / n 의 응답 -> response 변수에 저장
@@ -25,7 +24,7 @@ public class ScoreController { // 점수 저장 여부 -> y/n | y -> 점수 조�
                 GameMapper mapper = session.getMapper(GameMapper.class);
                 GameScore scores = GameScore.builder()
                         .userId(LoginController.loginId)
-                        .score(GameScore)
+                        .score(score)
                         .build();
                 int cnt = mapper.insertScore(scores);
                 if (cnt > 0) {
