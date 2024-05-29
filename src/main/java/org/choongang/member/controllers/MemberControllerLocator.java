@@ -3,6 +3,8 @@ package org.choongang.member.controllers;
 import org.choongang.global.Controller;
 import org.choongang.global.ControllerLocator;
 import org.choongang.global.constants.Menu;
+import org.choongang.score.controllers.RankController;
+import org.choongang.score.services.RankService;
 
 import java.util.HashMap;
 import java.util.Map;

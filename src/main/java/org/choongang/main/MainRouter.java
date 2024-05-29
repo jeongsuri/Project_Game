@@ -6,10 +6,7 @@ import org.choongang.global.ControllerLocator;
 import org.choongang.global.Router;
 import org.choongang.global.constants.Menu;
 import org.choongang.main.controllers.MainController;
-import org.choongang.member.controllers.JoinController;
-import org.choongang.member.controllers.LoginController;
 import org.choongang.member.controllers.MemberControllerLocator;
-import org.choongang.member.controllers.RankController;
 
 public class MainRouter implements Router {
 
