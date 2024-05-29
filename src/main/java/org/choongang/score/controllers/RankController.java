@@ -46,7 +46,7 @@ public class RankController extends AbstractController {
                     System.out.println("순위: " + score);
                     break;
                 default:
-                    System.out.println("잘못된 선택입니다. 다시 선택해 주세요");
+                    System.out.println("잘못된 선택입니다. 다시 선택해 주세요.");
                     break;
             }
         } catch (Exception e) {
