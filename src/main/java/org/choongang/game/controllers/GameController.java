@@ -1,19 +1,11 @@
 package org.choongang.game.controllers;
-
 import org.apache.ibatis.session.SqlSession;
 import org.choongang.game.entities.GamePlay;
-import org.choongang.game.entities.GameScore;
-import org.choongang.game.mapper.GameMapper;
-import org.choongang.game.services.GameService;
 import org.choongang.game.services.GameServiceLocator;
 import org.choongang.global.AbstractController;
-import org.choongang.global.Router;
 import org.choongang.global.Service;
 import org.choongang.global.configs.DBConn;
 import org.choongang.global.constants.Menu;
-import org.choongang.main.MainRouter;
-import org.choongang.member.controllers.LoginController;
-import org.choongang.member.session.MemberSession;
 import org.choongang.template.Templates;
 
 import java.util.ArrayList;
@@ -40,7 +32,7 @@ public class GameController extends AbstractController {
         p1.add("✋");
 
 
-        while(true) {
+        while(true){
             System.out.print("가위바위보");
             me = sc.nextInt() - 1;
             you = random.nextInt(3);
@@ -54,7 +46,7 @@ public class GameController extends AbstractController {
                 service.process(form);
                 System.out.println(form);
 
-            } catch (RuntimeException e) {
+            }catch(RuntimeException e){
 
                 System.out.println("오류");
 
@@ -103,8 +95,10 @@ public class GameController extends AbstractController {
             }
         }
 
-        // 게임 종료 후 점수 저장 여부 묻기  
+        // 게임 종료 후 점수 저장 여부 묻기
         ScoreController scoreController = new ScoreController();
         scoreController.SaveScore(gamescore);
+
+         */
     }
 }

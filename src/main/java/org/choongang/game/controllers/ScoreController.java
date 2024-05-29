@@ -23,7 +23,7 @@ public class ScoreController { // 점수 저장 여부 -> y/n | y -> 점수 조�
             try {
                 GameMapper mapper = session.getMapper(GameMapper.class);
                 GameScore scores = GameScore.builder()
-                        .userId(LoginController.loginId)
+                        .userId("")
                         .score(score)
                         .build();
                 int cnt = mapper.insertScore(scores);
