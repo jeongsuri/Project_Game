@@ -1,9 +1,14 @@
 package org.choongang.game.controllers;
 
 import org.apache.ibatis.session.SqlSession;
+import org.choongang.game.entities.GamePlay;
+import org.choongang.game.entities.GameScore;
 import org.choongang.game.mapper.GameMapper;
+import org.choongang.game.services.GameService;
+import org.choongang.game.services.GameServiceLocator;
 import org.choongang.global.AbstractController;
 import org.choongang.global.Router;
+import org.choongang.global.Service;
 import org.choongang.global.configs.DBConn;
 import org.choongang.global.constants.Menu;
 import org.choongang.main.MainRouter;
@@ -35,6 +40,31 @@ public class GameController extends AbstractController {
         p1.add("✊");
         p1.add("✋");
 
+
+        while(true){
+            System.out.print("가위바위보");
+            me = sc.nextInt() - 1;
+            you = random.nextInt(3);
+            GamePlay form = GamePlay.builder()
+                    .player1(me)
+                    .player2(you)
+                    .build();
+            try {
+                
+                Service service = GameServiceLocator.getInstance().find(Menu.GAME);
+                service.process(form);
+                System.out.println(form);
+
+            }catch(RuntimeException e){
+
+                System.out.println("오류");
+
+
+            }
+        }
+
+
+        /*
         outerLoop:
         while (true) {
             me = games("가위바위보 : ");
@@ -89,6 +119,8 @@ public class GameController extends AbstractController {
             e.printStackTrace();
             router.change(Menu.MAIN);
         }
+
+         */
 
 
 
