@@ -1,8 +1,6 @@
 package org.choongang.game.mapper;
 
-import org.choongang.game.controllers.GameScore;
-
-import java.util.List;
+import org.choongang.game.entites.GameScore;
 
 public interface GameMapper {
     int insertScore(GameScore gamescore);
