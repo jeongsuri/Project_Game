@@ -27,6 +27,7 @@ public class RankController extends AbstractController {
         try {
             System.out.println("1. 전체랭킹");
             System.out.println("2. 개인랭킹");
+            String choice = scoremessage("메뉴 선택: ");
             String choice = scoremassege("메뉴 선택: ");
 
             session = DBConn.getSession(); // SqlSession 생성

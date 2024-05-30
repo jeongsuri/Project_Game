@@ -33,7 +33,6 @@ public abstract class AbstractController implements Controller {
     public void prompt() {
         System.out.print("메뉴 선택: ");
         String menu = sc.nextLine();
-
         if (menu.equals("q") || menu.equals("quit") || menu.equals("exit")) {
             System.out.println("종료 합니다.");
             System.exit(0); // 0 - 정상 종료, 1 - 비정상 종료
