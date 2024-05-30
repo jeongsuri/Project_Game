@@ -9,7 +9,7 @@ import org.choongang.main.controllers.MainController;
 import org.choongang.member.controllers.JoinController;
 import org.choongang.member.controllers.LoginController;
 import org.choongang.member.controllers.MemberControllerLocator;
-import org.choongang.member.controllers.RankController;
+import org.choongang.score.controllers.RankController;
 
 public class MainRouter implements Router {
 
@@ -36,7 +36,7 @@ public class MainRouter implements Router {
 
 
             case GAME: controller = new GameController(); break;
-            case RANK: controller = memlocator.find(Menu.RANK); break;
+            case RANK: controller = new RankController(); break;
             default: controller = new MainController();
         }
         controller.run(); //common(), show(), prompt()

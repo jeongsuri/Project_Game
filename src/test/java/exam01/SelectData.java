@@ -30,7 +30,7 @@ public class SelectData {
     void test3() { // 유저아이디 입력 시 개인랭킹 조회
         SqlSession session = DBConn.getSession();
         ScoreMapper mapper = session.getMapper(ScoreMapper.class);
-        int score = mapper.getScoreOne("user01");
+        int score = mapper.getScoreOne("user1");
         System.out.println("순위: " + score);
     }
 }
