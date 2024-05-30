@@ -1,9 +1,0 @@
-diff a/src/main/java/org/choongang/score/controllers/RankController.java b/src/main/java/org/choongang/score/controllers/RankController.java	(rejected hunks)
-@@ -27,7 +27,6 @@
-         try {
-             System.out.println("1. 전체랭킹");
-             System.out.println("2. 개인랭킹");
--            String choice = scoremessage("메뉴 선택: ");
-             String choice = scoremassege("메뉴 선택: ");
- 
-             session = DBConn.getSession(); // SqlSession 생성
