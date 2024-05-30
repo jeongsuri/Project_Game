@@ -16,12 +16,12 @@ public class RankController extends AbstractController {
 
     @Override
     public void show() {
-
-        Templates.getInstance().render(Menu.RANK);
+        return;
     }
 
     @Override
     public void prompt() {
+        Templates.getInstance().render(Menu.RANK);
         SqlSession session = null;
 
         try {

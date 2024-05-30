@@ -34,5 +34,4 @@
         INSERT INTO SCORE (SCORE, USER_ID)
         VALUES (#{SCORE}, #{USER_ID})
     </insert>
-
 </mapper>
