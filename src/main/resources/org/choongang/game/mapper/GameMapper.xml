@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.choongang.game.mapper.GameMapper">
-    <resultMap id="scoreMap" type="org.choongang.game.entites.GameScore"> <!--멤버클래스의 변수명을 map처리하여 오라클과 동일하게만듬-->
+    <resultMap id="scoreMap" type="org.choongang.game.entities.GameScore"> <!--멤버클래스의 변수명을 map처리하여 오라클과 동일하게만듬-->
         <result column="USER_ID" property="userId" />
         <result column="SCORE" property="score" />
     </resultMap>
