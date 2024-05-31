@@ -1,7 +1,7 @@
 package org.choongang.game.controllers;
 
 import org.apache.ibatis.session.SqlSession;
-import org.choongang.game.entites.GameScore;
+import org.choongang.game.entities.GameScore;
 import org.choongang.game.mapper.GameMapper;
 import org.choongang.global.Router;
 import org.choongang.global.configs.DBConn;
