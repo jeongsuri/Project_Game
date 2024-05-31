@@ -4,9 +4,6 @@ import org.choongang.global.AbstractServiceLocator;
 import org.choongang.global.Service;
 import org.choongang.global.ServiceLocator;
 import org.choongang.global.constants.Menu;
-import org.choongang.member.services.JoinService;
-import org.choongang.member.services.LoginService;
-import org.choongang.member.services.MemberServiceLocator;
 
 public class GameServiceLocator extends AbstractServiceLocator {
     public static ServiceLocator getInstance(){

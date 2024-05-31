@@ -4,16 +4,23 @@ import org.choongang.global.constants.Menu;
 import org.choongang.main.MainRouter;
 import org.choongang.template.Templates;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.function.Predicate;
 
 public abstract class AbstractController implements Controller {
 
     protected Scanner sc;
+    protected Random rd;
+    protected List<String> items;
 
 
     public AbstractController() {
         sc = new Scanner(System.in);
+        rd = new Random();
+        items = new ArrayList<>();
     }
 
     /**

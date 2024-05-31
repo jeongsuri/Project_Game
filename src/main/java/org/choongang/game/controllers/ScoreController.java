@@ -1,7 +1,7 @@
 package org.choongang.game.controllers;
 
 import org.apache.ibatis.session.SqlSession;
-import org.choongang.game.entites.GameScore;
+import org.choongang.game.entities.GameScore;
 import org.choongang.game.mapper.GameMapper;
 import org.choongang.global.Router;
 import org.choongang.global.configs.DBConn;
@@ -23,7 +23,7 @@ public class ScoreController { // 점수 저장 여부 -> y/n | y -> 점수 조�
             try {
                 GameMapper mapper = session.getMapper(GameMapper.class);
                 GameScore scores = GameScore.builder()
-                        .userId(LoginController.loginId)
+                        .userId("123")
                         .score(score)
                         .build();
                 int cnt = mapper.insertScore(scores);
