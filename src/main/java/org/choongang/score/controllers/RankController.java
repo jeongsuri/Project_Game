@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.choongang.global.AbstractController;
 import org.choongang.global.configs.DBConn;
 import org.choongang.global.constants.Menu;
+import org.choongang.member.session.MemberSession;
 import org.choongang.score.entities.Rank;
 import org.choongang.score.entities.Score;
 import org.choongang.score.mapper.ScoreMapper;
@@ -27,7 +28,7 @@ public class RankController extends AbstractController {
         try {
             System.out.println("1. 전체랭킹");
             System.out.println("2. 개인랭킹");
-            String choice = scoremessage("메뉴 선택: ");
+            String choice = promptWithValidation("메뉴 선택: ", s -> !s.isBlank() || (!s.equals("1") && !s.equals("2")));
 
             session = DBConn.getSession(); // SqlSession 생성
 
@@ -44,7 +45,7 @@ public class RankController extends AbstractController {
                     System.out.println("개인랭킹");
                     // 개인랭킹 보여주는 창
                     ScoreMapper mapper = session.getMapper(ScoreMapper.class);
-                    int score = mapper.getScoreOne("user01");
+                    int score = mapper.getScoreOne(MemberSession.getMember().getUserId());
                     System.out.println("순위: " + score);
                     break;
                 default:
