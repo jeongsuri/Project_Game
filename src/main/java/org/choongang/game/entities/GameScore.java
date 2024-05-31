@@ -8,5 +8,4 @@ import lombok.Data;
 public class GameScore {
     private String userId ;
     private int score;
-
 }

@@ -21,4 +21,5 @@ public class SaveScoreService implements Service<GameScore> {
                 .build();
         mapper.insertScore(game);
     }
+
 }
