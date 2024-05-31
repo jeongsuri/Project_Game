@@ -27,12 +27,15 @@ public class MemberControllerLocator implements ControllerLocator {
     @Override
     public Controller find(Menu menu) {
         Controller controller = controllers.get(menu);
+
+
+
+
         if (controller != null) {
             return controller;
         }
         switch(menu) {
             case JOIN: controller = new JoinController(); break;
-            case RANK: controller = new RankController(); break;
             default: controller = new LoginController();
         }
 

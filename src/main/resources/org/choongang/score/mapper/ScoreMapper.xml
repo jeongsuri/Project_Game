@@ -23,7 +23,7 @@
 ]]>
     </select>
 
-    <select id="getScoreOne" resultType="java.lang.Integer">
+    <select id="getScoreOne" resultType="int">
         <![CDATA[
         SELECT MIN(RANK) AS 순위 FROM (SELECT SCORE, USER_ID, RANK() OVER(ORDER BY SCORE DESC) AS RANK FROM SCORE
         ORDER BY SCORE DESC) WHERE USER_ID = #{USER_ID}
@@ -34,5 +34,4 @@
         INSERT INTO SCORE (SCORE, USER_ID)
         VALUES (#{SCORE}, #{USER_ID})
     </insert>
-
 </mapper>

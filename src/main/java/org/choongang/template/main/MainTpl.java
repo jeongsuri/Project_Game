@@ -15,14 +15,16 @@ public class MainTpl implements Template {
             Member member = MemberSession.getMember();
 
             System.out.printf("%s(%s)님 로그인 하셨습니다.%n", member.getUserNm(), member.getUserId());
-
+            sb.append("1. 게임선택\n");
+            sb.append("2. 랭킹조회\n");
+            sb.append("3. 로그아웃\n");
         } else {
             sb.append("1. 회원가입\n");
             sb.append("2. 로그인\n");
         }
-        sb.append("3. 게임선택\n");
-        sb.append("4. 랭킹조회\n");
+
         sb.append(Templates.getInstance().line());
         return sb.toString();
     }
 }
+

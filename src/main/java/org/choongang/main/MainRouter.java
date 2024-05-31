@@ -7,6 +7,7 @@ import org.choongang.global.Router;
 import org.choongang.global.constants.Menu;
 import org.choongang.main.controllers.MainController;
 import org.choongang.member.controllers.MemberControllerLocator;
+import org.choongang.score.controllers.RankController;
 
 public class MainRouter implements Router {
 
@@ -23,14 +24,17 @@ public class MainRouter implements Router {
     }
 
     @Override
-    public void change(Menu menu) { // change -> 라우터 인터페이스 안에 있는 변수
+    public void change(Menu menu) {// change -> 라우터 인터페이스 안에 있는 변수
+
         ControllerLocator memlocator = MemberControllerLocator.getInstance();
         Controller controller = null;
         switch (menu){
             case JOIN: controller = memlocator.find(Menu.JOIN); break;
             case LOGIN: controller = memlocator.find(Menu.LOGIN); break;
+
+
             case GAME: controller = new GameController(); break;
-            case RANK: controller = memlocator.find(Menu.RANK); break;
+            case RANK: controller = new RankController(); break;
             default: controller = new MainController();
         }
         controller.run(); //common(), show(), prompt()

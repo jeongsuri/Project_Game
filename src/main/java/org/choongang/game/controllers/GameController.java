@@ -25,8 +25,8 @@ public class GameController extends AbstractController {
         while(true){
             System.out.print("가위바위보 : ");
             me = sc.nextInt() - 1;
-            you = rd.nextInt(3);
 
+            you = rd.nextInt(3);
             GamePlay form = new GamePlay(me, you, gamename, score,0);// 사용자가 입력한 값을 담는 역할 <- 사용자 요청 데이터
             while(true) {
                 try {

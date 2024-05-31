@@ -18,9 +18,9 @@ public class InsertData {
     void test1() {
         MemberMapper mapper = session.getMapper(MemberMapper.class);
         Member member = Member.builder()
-                .userId("user02")
+                .userId("user04")
                 .userPw("12345678")
-                .userNm("사용자02")
+                .userNm("사용자04")
                 .build();
         int plus1 = mapper.plusMember(member);
         System.out.println(plus1);
