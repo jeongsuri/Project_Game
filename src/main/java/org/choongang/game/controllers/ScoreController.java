@@ -7,7 +7,6 @@ import org.choongang.global.Router;
 import org.choongang.global.configs.DBConn;
 import org.choongang.global.constants.Menu;
 import org.choongang.main.MainRouter;
-import org.choongang.member.controllers.LoginController;
 
 import java.util.Scanner;
 
@@ -18,7 +17,7 @@ public class ScoreController { // 점수 저장 여부 -> y/n | y -> 점수 조�
         Scanner scanner = new Scanner(System.in);
         System.out.println("점수를 저장하시겠습니까? (예 : y / 아니오 : n) "); // 저장 여부 질문
         String response = scanner.nextLine(); // y / n 의 응답 -> response 변수에 저장
-    /*
+
         if (response.equalsIgnoreCase("y")) {
             try {
                 GameMapper mapper = session.getMapper(GameMapper.class);
@@ -40,6 +39,6 @@ public class ScoreController { // 점수 저장 여부 -> y/n | y -> 점수 조�
         }
 
         Router router = MainRouter.getInstance(); // 사용자 응답에 관계없이 메인 페이지로 이동
-        router.change(Menu.MAIN); */
+        router.change(Menu.MAIN);
     }
 }
