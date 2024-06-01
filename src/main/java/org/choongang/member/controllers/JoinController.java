@@ -60,6 +60,7 @@ public class JoinController extends AbstractController {
            //로그인 성공시 게임선택,랭킹조회 화면 이동
 
        }
+       router = MainRouter.getInstance();
     }
 }
 

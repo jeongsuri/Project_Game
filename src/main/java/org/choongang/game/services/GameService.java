@@ -2,48 +2,19 @@ package org.choongang.game.services;
 import org.choongang.game.entities.GamePlay;
 import org.choongang.global.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class GameService implements Service<GamePlay> {
 
 
     @Override
     public void process(GamePlay form) {
-        if (form.getGamename().equals("가위바위보")) {
-            if (form.getPlayer1() != form.getPlayer2()) {
-                if (form.getPlayer1() + form.getPlayer2() * 2 == 1 || form.getPlayer1() + form.getPlayer2() * 2 == 4) { //가위바위보 이겼을때.
-                    System.out.println("|  🧑‍💻  |  🖥  |");
-                    System.out.println("|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  |");
-                    System.out.println("이겼습니다. ");
-                    form.setGamename("묵찌빠");
-                    form.setWinner(1);
-
-
-                } else {
-                    System.out.println("|  🧑‍💻  |  🖥  |");
-                    System.out.println("|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  |");
-                    System.out.println("졌습니다.. ");
-                    form.setGamename("묵찌빠");
-                    form.setWinner(2);
-
-                }
-            } else {
-                System.out.println("|  🧑‍💻  |  🖥  |");
-                System.out.println("|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  |");
-                System.out.println("비겼습니다.");
-            }
-        }else{
-            if(form.getPlayer1() == form.getPlayer2()){
-                System.out.println("|  🧑‍💻  |  🖥  |");
-                System.out.println("|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  |");
-                switch(form.getWinner()){
-                    case 1:
-                        System.out.println("이겼습니다.");
-                    case 2:
-                        System.out.println("졌습니다.");
-                }
-            }else{
-                form.setGamename("가위바위보");
-            }
+        switch (form.getPlayer2() -  form.getPlayer1()){
+            case 2: case -1: System.out.print("|  🧑‍💻  |  🖥  |\n|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  | \n 이겼습니다.\n"); break;
+            case 0: System.out.print("|  🧑‍💻  |  🖥  |\n|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  | \n 비겼습니다.\n"); break;
+            default: System.out.print("|  🧑‍💻  |  🖥  |\n|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  | \n 졌습니다.\n"); break;
         }
     }
 }

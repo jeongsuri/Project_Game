@@ -6,6 +6,7 @@ public enum Menu {
     LOGIN, // 로그인
     MYPAGE, //마이페이지
     RANK, // 전체랭킹, 개인랭킹
-    GAME // 게임하기
+    GAME, // 게임하기
+    SAVE //점수저장하기
 
 }
