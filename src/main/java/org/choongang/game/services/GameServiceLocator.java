@@ -22,7 +22,7 @@ public class GameServiceLocator extends AbstractServiceLocator {
         }
         switch (menu){
             case GAME: service = new GameService(); break;
-            case SAVE: service = new GameService(); break;
+            case SAVE: service = new SaveScoreService(); break;
             default: service = new GameService(); break;
         }
         return service;

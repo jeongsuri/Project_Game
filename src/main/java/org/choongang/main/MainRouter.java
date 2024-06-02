@@ -2,6 +2,7 @@ package org.choongang.main;
 
 import org.choongang.game.controllers.GameController;
 import org.choongang.game.controllers.GameControllerLocator;
+import org.choongang.game.controllers.ScoreController;
 import org.choongang.global.Controller;
 import org.choongang.global.ControllerLocator;
 import org.choongang.global.Router;
@@ -34,6 +35,8 @@ public class MainRouter implements Router {
             case JOIN: controller = memlocator.find(Menu.JOIN); break;
             case LOGIN: controller = memlocator.find(Menu.LOGIN); break;
             case GAME: controller = gamelocator.find(Menu.GAME); break;
+            //case SAVE: controller = gamelocator.find(Menu.SAVE); break;
+            case SAVE: controller =  new ScoreController(); break;
             case RANK: controller = new RankController(); break;
             default: controller = new MainController();
         }
