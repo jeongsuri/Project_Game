@@ -10,7 +10,6 @@ import lombok.Data;
 public class GamePlay {
     private int player1 ;
     private int player2 ;
-    private String gamename;
     private int score;
     private int winner;
 }

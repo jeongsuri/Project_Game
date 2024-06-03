@@ -1,43 +1,58 @@
 package org.choongang.game.controllers;
 
-import org.apache.ibatis.session.SqlSession;
+import org.choongang.game.entities.GamePlay;
 import org.choongang.game.entities.GameScore;
-import org.choongang.game.mapper.GameMapper;
+import org.choongang.game.services.GameServiceLocator;
+import org.choongang.game.session.GameSession;
+import org.choongang.global.AbstractController;
 import org.choongang.global.Router;
-import org.choongang.global.configs.DBConn;
+import org.choongang.global.Service;
 import org.choongang.global.constants.Menu;
 import org.choongang.main.MainRouter;
+import org.choongang.member.entities.Member;
+import org.choongang.member.session.MemberSession;
+import org.choongang.template.Templates;
 
 import java.util.Scanner;
 
-public class ScoreController { // 점수 저장 여부 -> y/n | y -> 점수 조회 & 메인 페이지 , n -> 메인 페이지
-    private SqlSession session = DBConn.getSession(); // session = 데이터베이스 연결
+public class ScoreController extends AbstractController { // 점수 저장 여부 -> y/n | y -> 점수 조회 & 메인 페이지 , n -> 메인 페이지
+    Member member = MemberSession.getMember();
+    GamePlay gamePlay = GameSession.getGamePlay();
 
-    public void SaveScore(int score) { // saveScore -> 점수 저장 여부 + 저장
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("점수를 저장하시겠습니까? (예 : y / 아니오 : n) "); // 저장 여부 질문
-        String response = scanner.nextLine(); // y / n 의 응답 -> response 변수에 저장
+    @Override
+    public void common(){
+        System.out.println(Templates.getInstance().doubleLine());
+        System.out.println("묵찌빠 게임");
+        System.out.println(Templates.getInstance().doubleLine());
+    }
 
-        if (response.equalsIgnoreCase("y")) {
-            try {
-                GameMapper mapper = session.getMapper(GameMapper.class);
-                GameScore scores = GameScore.builder()
-                        .userId("")
-                        .score(score)
+    @Override
+    public void show() {
+        System.out.printf("%s(%s)님의 최종점수는 %d입니다.\n",member.getUserId(),member.getUserNm(),gamePlay.getScore());
+        System.out.println(Templates.getInstance().line());
+    }
+
+    @Override
+    public void prompt() {
+        System.out.print("점수를 저장하시겠습니까? (예 : 1 / 아니오 : 2) : "); // 저장 여부 질문
+        switch (sc.nextInt()){
+            case 1:
+                GameScore form = GameScore.builder()
+                        .userId(member.getUserId())
+                        .score(gamePlay.getScore())
                         .build();
-                int cnt = mapper.insertScore(scores);
-                if (cnt > 0) {
-                    System.out.println("점수 저장을 완료했습니다.");
-                } else {
-                    System.out.println("점수 저장을 실패했습니다.");
+                try{
+                    Service service = new GameServiceLocator().find(Menu.SAVE);
+                    service.process(form);
+                    System.out.println("저장완료!");
+                }catch(RuntimeException e){
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else { // n 를 선택한 경우
-            System.out.println("점수 저장을 선택하지 않았습니다.");
+                break;
+            case 2:
+                System.out.println("점수 저장을 선택하지 않았습니다.");
+                break;
         }
-
         Router router = MainRouter.getInstance(); // 사용자 응답에 관계없이 메인 페이지로 이동
         router.change(Menu.MAIN);
     }

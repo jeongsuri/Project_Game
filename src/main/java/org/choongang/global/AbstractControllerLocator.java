@@ -1,3 +1,4 @@
+
 package org.choongang.global;
 
 import org.choongang.global.constants.Menu;
@@ -12,3 +13,4 @@ public abstract class AbstractControllerLocator implements ControllerLocator {
         controllers = new HashMap<>();
     }
 }
+

@@ -6,6 +6,7 @@ import org.choongang.global.ServiceLocator;
 import org.choongang.global.constants.Menu;
 
 public class GameServiceLocator extends AbstractServiceLocator {
+
     public static ServiceLocator getInstance(){
         if(instance == null){
             instance = new GameServiceLocator();
@@ -21,6 +22,8 @@ public class GameServiceLocator extends AbstractServiceLocator {
         }
         switch (menu){
             case GAME: service = new GameService(); break;
+            case SAVE: service = new SaveScoreService(); break;
+            default: service = new GameService(); break;
         }
         return service;
     }
