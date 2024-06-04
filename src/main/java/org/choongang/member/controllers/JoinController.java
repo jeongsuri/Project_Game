@@ -61,5 +61,6 @@ public class JoinController extends AbstractController {
 
        }
     }
+
 }
 

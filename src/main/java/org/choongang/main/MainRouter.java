@@ -25,9 +25,11 @@ public class MainRouter implements Router {
         return instance;
     }
 
+
+
     @Override
     public void change(Menu menu) {// change -> 라우터 인터페이스 안에 있는 변수
-
+     //chage 메서드에서는 주어진 메뉴에 따라 해당하는 컨트롤러를 찾아 실행하는 기능을 수행합니다.
         ControllerLocator memlocator = MemberControllerLocator.getInstance();
         Controller controller = null;
         switch (menu){
@@ -41,7 +43,7 @@ public class MainRouter implements Router {
         }
         controller.run(); //common(), show(), prompt()
     }
-
+    //start()메서드는 무한루프를 통해 반복적으로 호출
      @Override
        public void start() {
         while(true){
