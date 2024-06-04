@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.function.Predicate;
-
+//추상 클래스 사용으로 재사용성과 확장성을 높였다.
 public abstract class AbstractController implements Controller {
 
     protected Scanner sc;
@@ -95,7 +95,7 @@ public abstract class AbstractController implements Controller {
         show(); // 실제 AbstractController 를 상속받은 하위 클래스의 각각 다른 부분
         prompt(); // 실제 보이는 부분
     }
-
+      //메뉴 변경 처리
     private void change(int menuNo) { // 공통 입력 내용
         Menu menu = null;
         if (MemberSession.isLogin()) {

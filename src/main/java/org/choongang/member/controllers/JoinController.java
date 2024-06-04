@@ -62,5 +62,6 @@ public class JoinController extends AbstractController {
        }
        router = MainRouter.getInstance();
     }
+
 }
 
