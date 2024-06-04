@@ -21,8 +21,8 @@ public class GameServiceLocator extends AbstractServiceLocator {
             return service;
         }
         switch (menu){
-            case GAME: service = new GameService(); break;
-            case SAVE: service = new SaveScoreService(); break;
+            case GAME: service = new GameService(); break; // GAME -> GameService
+            case SAVE: service = new SaveScoreService(); break; // SAVE -> SaveScoreService
             default: service = new GameService(); break;
         }
         return service;

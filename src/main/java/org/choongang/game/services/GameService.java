@@ -15,9 +15,10 @@ public class GameService implements Service<GamePlay> {
         switch(form.getWinner()){
             case 0:
                 switch (form.getPlayer2() -  form.getPlayer1()){
-                    case 2: case -1: System.out.print("|  🧑‍💻  |  🖥  |\n|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  | \n이겼습니다. 공격차례입니다.\n"); form.setWinner(1); break;
-                    case 0: System.out.print("|  🧑‍💻  |  🖥  |\n|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  | \n비겼습니다. 다시 가위바위보 하세요.\n"); form.setWinner(0); break;
+                    case 2: case -1: System.out.print("|  🧑‍💻  |  🖥  |\n|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  | \n이겼습니다. 공격차례입니다.\n"); form.setWinner(1); break; // 가위바위보 이긴 경우
+                    case 0: System.out.print("|  🧑‍💻  |  🖥  |\n|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  | \n비겼습니다. 다시 가위바위보 하세요.\n"); form.setWinner(0); break; // 가위바위보 비긴 경우 -> 다시 하기
                     default: System.out.print("|  🧑‍💻  |  🖥  |\n|  " + form.getPlayer1() + "  |  " + form.getPlayer2() + "  | \n졌습니다. 수비차례입니다.\n"); form.setWinner(2); break;
+                    // 가위바위보 진 경우
                 }
                 break;
             case 1:

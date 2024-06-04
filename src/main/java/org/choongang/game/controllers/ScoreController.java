@@ -27,7 +27,7 @@ public class ScoreController extends AbstractController { // 점수 저장 여�
     }
 
     @Override
-    public void show() {
+    public void show() { // 최종 점수
         System.out.printf("%s(%s)님의 최종점수는 %d입니다.\n",member.getUserId(),member.getUserNm(),gamePlay.getScore());
         System.out.println(Templates.getInstance().line());
     }
@@ -44,13 +44,13 @@ public class ScoreController extends AbstractController { // 점수 저장 여�
                 try{
                     Service service = new GameServiceLocator().find(Menu.SAVE);
                     service.process(form);
-                    System.out.println("저장완료!");
+                    System.out.println("저장완료!"); // 저장이 된 경우
                 }catch(RuntimeException e){
                     e.printStackTrace();
                 }
                 break;
             case 2:
-                System.out.println("점수 저장을 선택하지 않았습니다.");
+                System.out.println("점수 저장을 선택하지 않았습니다."); // 저장을 선택하지 않은 경우
                 break;
         }
         Router router = MainRouter.getInstance(); // 사용자 응답에 관계없이 메인 페이지로 이동

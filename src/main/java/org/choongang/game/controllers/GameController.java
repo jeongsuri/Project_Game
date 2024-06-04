@@ -31,7 +31,7 @@ public class GameController extends AbstractController {
                 service.process(form);
             } catch (RuntimeException e) {
                 e.printStackTrace();
-                System.out.println("1,2,3만 입력하세요. ");
+                System.out.println("1, 2, 3만 입력하세요. "); // 1, 2, 3 외에는 오류 발생
             }
             if(form.getWinner()==3){
                 GameSession.setGamePlay(form);
